@@ -9,7 +9,7 @@ module ClassCount
 
   def self.raise_err(line, message)
     error = Error.new(line, message)
-    class_count_err = error.print_class_count_err(line, message) if error
+    class_count_err = error.print_err(line, message) if error
     class_count_err
   end
 

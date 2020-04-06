@@ -6,11 +6,15 @@ module CheckJsFiles
   end
 
   def self.find_file(path)
-    File.exist?(path) ? path : "could not find any JS file in the path #{path} file"
+    puts "Could not find any JS file in the path #{path} file" unless File.exist?(path)
+
+    File.exist?(path)
   end
 
   def self.find_dir(path)
-    Dir.exist?(path) ? true : "could not find any JS file in the #{path} Folder"
+    return "Could not find any JS file in the #{path} Folder" unless Dir.exist?(path)
+
+    Dir.exist?(path)
   end
 
   def self.seek_js(*path)

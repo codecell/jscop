@@ -10,7 +10,8 @@ def show_title
 end
 
 def print_linter_result(error_bin, path)
-  puts "Working Tree Is Clean, No Errors Found in #{path}".green if !error_bin.empty?
+  path_exists = File.exist?(path) || Dir.exist?(path)
+  puts "Working Tree Is Clean, No Errors Found in #{path}".green if path_exists && error_bin.empty?
   puts
 
   counter = 0
@@ -18,7 +19,7 @@ def print_linter_result(error_bin, path)
 
   puts "#{number_of_errors} Type(s) of Error(s) Found!".yellow if number_of_errors.positive?
   while counter < number_of_errors
-    puts "#{counter + 1}. #{error_bin[counter]} In The Path #{path}".red
+    puts "#{counter + 1}. #{error_bin[counter].to_s.red} #{'In $PATH'.yellow} #{path.to_s.yellow}"
     counter += 1
   end
 end

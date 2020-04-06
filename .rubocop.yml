@@ -40,6 +40,8 @@ Style/FrozenStringLiteralComment:
   EnforcedStyle: never
 Style/NegatedIf:
   Enabled: false
+Style/NegatedUnless:
+  Enabled: false
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
