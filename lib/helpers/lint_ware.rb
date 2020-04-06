@@ -13,7 +13,7 @@ module LintWare
     if CheckJsFiles.find_dir(path)
       files = CheckJsFiles.seek_js(path)
       if !files.is_a? String
-        files.each {|f| linter(f, errs)}
+        files.each { |f| linter(f, errs) }
       else
         puts "No such Folder as #{path}"
       end
@@ -25,10 +25,10 @@ module LintWare
   def self.seek_js(*path)
     if path[0]
       files = Dir["#{path[0]}/**/*.js"]
-      !files.empty? ? files : "No JS files found in #{path[0]} Path"    
+      !files.empty? ? files : "No JS files found in #{path[0]} Path"
     else
       files = Dir['./**/*.js']
-      !files.empty? ? files : "No JS files found in this Folder"
+      !files.empty? ? files : 'No JS files found in this Folder'
     end
   end
 end
