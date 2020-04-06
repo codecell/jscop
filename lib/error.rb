@@ -11,8 +11,8 @@ class Error
     p mess
   end
 
-  def print_naming_err(li, er)
-    mess = "#{er} At line #{li}"
+  def print_naming_err(line, error)
+    mess = "#{error} At line #{line}"
     p mess
   end
 end

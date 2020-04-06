@@ -1,13 +1,10 @@
-# Locate Js files in defined paths in the Terminal
+# Locate Js files in defined paths on the Terminal
 module CheckJsFiles
-  def self.lint_files(err, file)
-    # result = check_class_number(file)
-    # err << result if result
+  def self.lint_files(err, _file)
     err
   end
 
   def self.find_file(path)
-    print "here"
     File.exist?(path) ? path : "could not find any JS file in the path #{path} file"
   end
 

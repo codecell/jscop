@@ -15,5 +15,34 @@ Metrics/AbcSize:
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
-  ExcludedMethods: ['describe']
+  ExcludedMethods: ["describe"]
   Max: 30
+Metrics/ModuleLength:
+  Max: 500
+Metrics/CyclomaticComplexity:
+  Max: 20
+Metrics/PerceivedComplexity:
+  Max: 20
+Metrics/ParameterLists:
+  Max: 7
+
+Style/Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/EachForSimpleLoop:
+  Enabled: false
+Style/AndOr:
+  Enabled: false
+Style/DefWithParentheses:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+Layout/HashAlignment:
+  EnforcedColonStyle: key
+Layout/ExtraSpacing:
+  AllowForAlignment: false
+Layout/MultilineMethodCallIndentation:
+  Enabled: true
+  EnforcedStyle: indented

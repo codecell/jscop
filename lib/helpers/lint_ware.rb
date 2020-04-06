@@ -1,19 +1,22 @@
 require_relative '../modules/check_js_files'
 require_relative '../js_parser'
 require_relative '../modules/spacing_checker'
+require_relative '../modules/naming_checker'
 require_relative '../error'
 
-module LintWare 
-  def self.call_all(err, line)
+module LintWare
+  def self.call_all(err, _line)
     err
   end
-  
+
   def self.linter(given_file, errs)
     file = JsParser.new(given_file)
+
     CheckJsFiles.lint_files(errs, file)
     SpacingChecker.lint_files(errs, file)
-    read_lambda = lambda {|l| errs = call_all(errs, l) if errs}
-    file.lines.each(&read_lambda)
+    NamingChecker.lint_files(errs, file)
+
+    file.lines.each { |l| errs = call_all(errs, l) if errs }
   end
 
   def self.init_files_linting(path, errs)
@@ -28,7 +31,7 @@ module LintWare
     if CheckJsFiles.find_dir(path)
       files = CheckJsFiles.seek_js(path)
       if !files.is_a? String
-        files.each {|f| linter(f, errs)}
+        files.each { |f| linter(f, errs) }
       else
         puts "No such Folder as #{path}"
       end
