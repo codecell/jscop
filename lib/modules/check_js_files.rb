@@ -1,6 +1,7 @@
 # Locate Js files in defined paths in the Terminal
 module CheckJsFiles
   def self.find_file(path)
+    print "here"
     File.exist?(path) ? path : "could not find any JS file in the path #{path} file"
   end
 

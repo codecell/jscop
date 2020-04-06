@@ -6,9 +6,9 @@ errors = []
 if ARGV.length.positive?
   path = ARGV[0]
 
-  regex = /(\w|\W)+.js$/
+  js_file_pattern = /(\w|\W)+.js$/
 
-  if regex.match?(path)
+  if js_file_pattern.match?(path)
     LintWare.init_files_linting(path, errors)
   else
     LintWare.init_dir_linting(path, errors)
