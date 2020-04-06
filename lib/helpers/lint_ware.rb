@@ -10,7 +10,7 @@ module LintWare
   
   def self.linter(given_file, errs)
     file = JsParser.new(given_file)
-    # CheckJsFiles.lint_files(errs, file)
+    CheckJsFiles.lint_files(errs, file)
     # VariableChecker.lint_files(errs, file)
     read_lambda = lambda {|l| errs = call_all(errs, l) if errs}
     file.lines.each(&read_lambda)
