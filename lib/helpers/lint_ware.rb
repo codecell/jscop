@@ -25,7 +25,7 @@ module LintWare
     if CheckJsFiles.find_file(path)
       linter(path, errors)
     else
-      puts "No such File as #{path}"
+      puts "No such File as #{path}".yellow
     end
   end
 
@@ -35,7 +35,7 @@ module LintWare
       if !files.is_a? String
         files.each { |file| linter(file, errors) }
       else
-        puts "No such Folder as #{path}"
+        puts "No such Folder as #{path}".yellow
       end
     else
       p CheckJsFiles.find_dir(path)

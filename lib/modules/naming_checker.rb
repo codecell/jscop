@@ -8,9 +8,8 @@ module NamingChecker
   end
 
   def self.raise_err(line, message)
-    naming_err = []
     error = Error.new(line, message)
-    naming_err << error.print_naming_err(line, message) if error
+    naming_err = error.print_naming_err(line, message) if error
     naming_err
   end
 
