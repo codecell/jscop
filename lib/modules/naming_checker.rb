@@ -26,6 +26,6 @@ module NamingChecker
     size = lines_with_spaces.length
 
     error_message = 'NamingError: Uppercase|Numbers used to Start a variable name'
-    raise_err(lines_with_spaces.to_ary, error_message) if size.positive?
+    raise_err(lines_with_spaces, error_message) if size.positive?
   end
 end

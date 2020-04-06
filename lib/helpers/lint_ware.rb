@@ -3,6 +3,7 @@ require_relative '../js_parser'
 require_relative '../modules/spacing_checker'
 require_relative '../modules/naming_checker'
 require_relative '../modules/class_count'
+require_relative '../modules/class_name'
 require_relative '../error'
 
 module LintWare
@@ -17,6 +18,7 @@ module LintWare
     SpacingChecker.lint_files(errors, file)
     NamingChecker.lint_files(errors, file)
     ClassCount.lint_files(errors, file)
+    ClassName.lint_files(errors, file)
 
     file.lines.each { |line| errors = call_all(errors, line) if errors }
   end
