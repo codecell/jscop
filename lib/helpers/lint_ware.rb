@@ -9,14 +9,14 @@ module LintWare
     err
   end
 
-  def self.linter(given_file, errs)
+  def self.linter(given_file, errors)
     file = JsParser.new(given_file)
 
-    CheckJsFiles.lint_files(errs, file)
-    SpacingChecker.lint_files(errs, file)
-    NamingChecker.lint_files(errs, file)
+    CheckJsFiles.lint_files(errors, file)
+    SpacingChecker.lint_files(errors, file)
+    NamingChecker.lint_files(errors, file)
 
-    file.lines.each { |l| errs = call_all(errs, l) if errs }
+    file.lines.each { |line| errors = call_all(errors, line) if errors }
   end
 
   def self.init_files_linting(path, errs)

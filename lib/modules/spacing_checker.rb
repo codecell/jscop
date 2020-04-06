@@ -23,7 +23,7 @@ module SpacingChecker
 
   def self.check_spaces(file)
     lines_with_spaces = []
-    file.lines.each { |l| lines_with_spaces << l.number if found_spaces(l.content) }
+    file.lines.each { |line| lines_with_spaces << line.number if found_spaces(line.content) }
     size = lines_with_spaces.count
 
     raise_err(lines_with_spaces, 'SpacingError: Redundant Space(s) found') if size.positive?
