@@ -5,20 +5,20 @@ require 'colorize'
 
 def show_title
   font = TTY::Font.new()
-  font_messge = font.write('JsCompanion', letter_spacing: 1)
+  font_messge = font.write('Js Companion', letter_spacing: 1)
   puts font_messge
 end
 
 def Print_linter_result(error_bin, path)
-  puts "Working Tree Is Clean, No Errors found in #{path}".green unless error_bin.length > 0
+  puts "Working Tree Is Clean, No Errors Found in #{path}".green unless error_bin.length > 0
   puts
 
   counter = 0
   number_of_errors = error_bin.length
 
-  puts "#{number_of_errors} Type(s) of Error(s) found".yellow if number_of_errors.positive?
+  puts "#{number_of_errors} Type(s) of Error(s) Found!".yellow if number_of_errors.positive?
   while counter < number_of_errors
-    puts "#{counter + 1}.  #{error_bin[counter]} In The Path #{path}".red
+    puts "#{counter + 1} #{error_bin[counter]} In The Path #{path}".red
     counter += 1
   end
 end
