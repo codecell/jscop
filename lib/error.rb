@@ -15,4 +15,9 @@ class Error
     mess = "#{error} At line #{line}"
     p mess
   end
+
+  def print_class_count_err(line, error)
+    mess = "#{error} At line #{line}"
+    p mess
+  end
 end

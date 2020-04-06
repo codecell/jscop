@@ -1,6 +1,13 @@
-  const red = black
-
-
+const red medt = black
 
 let 5ada = 9
- console.log()
+console.log()
+
+class {
+
+ }
+
+class {
+
+ }
+

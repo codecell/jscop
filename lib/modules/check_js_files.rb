@@ -1,4 +1,5 @@
 # Locate Js files in defined paths on the Terminal
+
 module CheckJsFiles
   def self.lint_files(err, _file)
     err
