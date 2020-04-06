@@ -1,6 +1,6 @@
 require_relative '../modules/check_js_files'
 require_relative '../js_parser'
-# require_relative '../modules/variable_checker'
+require_relative '../modules/spacing_checker'
 require_relative '../error'
 
 module LintWare 
@@ -11,7 +11,7 @@ module LintWare
   def self.linter(given_file, errs)
     file = JsParser.new(given_file)
     CheckJsFiles.lint_files(errs, file)
-    # VariableChecker.lint_files(errs, file)
+    SpacingChecker.lint_files(errs, file)
     read_lambda = lambda {|l| errs = call_all(errs, l) if errs}
     file.lines.each(&read_lambda)
   end
