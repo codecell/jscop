@@ -1,1 +1,1 @@
-# codecell-js-companion
+# js-companion
