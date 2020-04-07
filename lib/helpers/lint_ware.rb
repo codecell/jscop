@@ -10,11 +10,10 @@ module LintWare
   def self.start_all(given_file)
     file = JsParser.new(given_file)
 
-    SpacingChecker.lint_files(file)
+    SpacingChecker.check_spaces(file)
     NamingChecker.check_naming(file)
     ClassCount.check_class_number(file)
     ClassName.check_class_name(file)
-
   end
 
   def self.init_files_linting(path)

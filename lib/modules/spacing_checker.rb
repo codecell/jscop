@@ -1,10 +1,6 @@
 require_relative '../error'
 
 module SpacingChecker
-  def self.lint_files(file)
-    check_spaces(file)
-  end
-
   def self.raise_err(line, message, path)
     error = Error.new(line, message, path)
     spacing_err = error.print_err(line, message, path) if error

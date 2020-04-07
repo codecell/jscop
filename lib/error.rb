@@ -29,11 +29,7 @@ class Error
     emit_err = error_hash.each {|key|
       puts "#{key[1].to_s.red}. Found On >> line #{line.to_s.yellow} << in #{path.to_s.yellow}" if key[0].to_s == type
     }
-   
-    # if emit_err
-    # else
-    #   puts "Ite a di Ocha"
-    # end
+ 
     emit_err
   end
 end

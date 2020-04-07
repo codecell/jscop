@@ -13,6 +13,8 @@ end
 def js_companion_init
   show_title
 
+  errors = []
+
   return unless ARGV.length.positive?
 
   path = ARGV[0]
