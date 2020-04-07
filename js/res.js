@@ -1,3 +1,5 @@
- class EmT-eka {
+const Emaker = best
 
+class ameka {
+  
 }

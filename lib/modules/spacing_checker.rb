@@ -1,15 +1,13 @@
 require_relative '../error'
 
 module SpacingChecker
-  def self.lint_files(err, file)
-    space_check_err = check_spaces(file)
-    err << space_check_err if space_check_err
-    err
+  def self.lint_files(file)
+    check_spaces(file)
   end
 
-  def self.raise_err(line, message)
-    error = Error.new(line, message)
-    spacing_err = error.print_err(line, message) if error
+  def self.raise_err(line, message, path)
+    error = Error.new(line, message, path)
+    spacing_err = error.print_err(line, message, path) if error
     spacing_err
   end
 
@@ -26,10 +24,10 @@ module SpacingChecker
   end
 
   def self.check_spaces(file)
-    lines_with_spaces = []
-    file.lines.each { |line| lines_with_spaces << line.number if found_spaces(line.content) }
-    size = lines_with_spaces.count
-
-    raise_err(lines_with_spaces.to_s, 'SpacingError: Redundant Space(s) found') if size.positive?
+    file.lines.each { |line|
+      lines_with_spaces = line.number if found_spaces(line.content)
+      err_type = 'SPACING_ERR' if lines_with_spaces
+      raise_err(lines_with_spaces, err_type, line.filename)
+    }
   end
 end

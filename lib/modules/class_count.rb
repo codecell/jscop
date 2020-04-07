@@ -1,15 +1,9 @@
 require_relative '../error'
 
 module ClassCount
-  def self.lint_files(err, file)
-    result = check_class_number(file)
-    err << result if result
-    err
-  end
-
-  def self.raise_err(line, message)
-    error = Error.new(line, message)
-    class_count_err = error.print_err(line, message) if error
+  def self.raise_err(line, message, path)
+    error = Error.new(line, message, path)
+    class_count_err = error.print_err(line, message, path) if error
     class_count_err
   end
 
@@ -17,9 +11,12 @@ module ClassCount
     pat = /(class)/
 
     lines_with_class = []
-    file.lines.each { |l| lines_with_class << l.number if pat.match?(l.content) }
-    size = lines_with_class.count
+    err_type = 'CLASS_COUNT_ERR'
 
-    raise_err(lines_with_class, "CountError: #{lines_with_class.count} classes defined in a module") if size > 1
+    file.lines.each { |line| 
+      lines_with_class << line.number if pat.match?(line.content)
+      name = line.filename
+    }
+    raise_err(lines_with_class, err_type, file.filename) if lines_with_class.length > 1
   end
 end

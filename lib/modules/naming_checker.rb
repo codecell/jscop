@@ -1,15 +1,9 @@
 require_relative '../error'
 
 module NamingChecker
-  def self.lint_files(err, file)
-    name_check_err = check_naming(file)
-    err << name_check_err if name_check_err
-    err
-  end
-
-  def self.raise_err(line, message)
-    error = Error.new(line, message)
-    naming_err = error.print_err(line, message) if error
+  def self.raise_err(line, err_type, path_name)
+    error = Error.new(line, err_type, path_name)
+    naming_err = error.print_err(line, err_type, path_name) if error
     naming_err
   end
 
@@ -19,13 +13,11 @@ module NamingChecker
     bad_var_start.match?(bad_case) || good_var_with_space_in_between.match?(bad_case)
   end
 
-  def self.check_naming(file)
-    lines_with_spaces = []
-
-    file.lines.each { |ln| lines_with_spaces << ln.number if bad_var_case(ln.content) }
-    size = lines_with_spaces.length
-
-    error_message = 'NamingError: Uppercase|Numbers used to Start a variable name'
-    raise_err(lines_with_spaces, error_message) if size.positive?
+  def self.check_naming(fpath) 
+    fpath.lines.each { |line|
+      line_with_bad_naming = line.number if bad_var_case(line.content)
+      err_type = 'VAR_NAMING_ERR' if line_with_bad_naming
+      raise_err(line_with_bad_naming, err_type, line.filename) if line_with_bad_naming
+    }
   end
 end

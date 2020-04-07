@@ -7,40 +7,34 @@ require_relative '../modules/class_name'
 require_relative '../error'
 
 module LintWare
-  def self.call_all(err, _line)
-    err
-  end
-
-  def self.linter(given_file, errors)
+  def self.start_all(given_file)
     file = JsParser.new(given_file)
 
-    CheckJsFiles.lint_files(errors, file)
-    SpacingChecker.lint_files(errors, file)
-    NamingChecker.lint_files(errors, file)
-    ClassCount.lint_files(errors, file)
-    ClassName.lint_files(errors, file)
+    SpacingChecker.lint_files(file)
+    NamingChecker.check_naming(file)
+    ClassCount.check_class_number(file)
+    ClassName.check_class_name(file)
 
-    file.lines.each { |line| errors = call_all(errors, line) if errors }
   end
 
-  def self.init_files_linting(path, errors)
+  def self.init_files_linting(path)
     if CheckJsFiles.find_file(path)
-      linter(path, errors)
+      start_all(path)
     else
       puts "No such File as #{path}".yellow
     end
   end
 
-  def self.init_dir_linting(path, errors)
+  def self.init_dir_linting(path)
     if CheckJsFiles.find_dir(path)
       files = CheckJsFiles.seek_js(path)
       if !files.is_a? String
-        files.each { |file| linter(file, errors) }
+        files.each { |file| start_all(file) }
       else
         puts "No such Folder as #{path}".yellow
       end
     else
-      p CheckJsFiles.find_dir(path)
+      CheckJsFiles.find_file(path)
     end
   end
 end

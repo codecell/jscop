@@ -11,7 +11,7 @@ class JsParser
 
   def set_lines
     file = File.open(@filename)
-
+    
     all_lines = file.readlines.map(&:chomp)
     init_lines = lambda { |val, index|
       line = Line.new(index + 1, val, @filename)
@@ -19,5 +19,6 @@ class JsParser
     }
 
     all_lines.each_with_index(&init_lines)
+    file.close
   end
 end

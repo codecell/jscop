@@ -1,3 +1,8 @@
   
-let  red
-let red6 =  0
+var Tmeka = 6
+
+class edr {
+
+}
+
+class Emeka {}
