@@ -7,13 +7,11 @@ class Error
     @file_path = fpath
   end
 
-  def print_linter_result(error_bin)
-    error_bin = []
-    
+  def print_linter_result
     number_of_errors = error_bin.length
-  
-    puts "As Clean As Snow! No Errors Found in #{path}".green unless number_of_errors.positive?  
-  
+
+    puts "As Clean As Snow! No Errors Found in #{path}".green unless number_of_errors.positive?
+
     puts "#{number_of_errors} Error(s) Found! in #{path}".yellow if number_of_errors.positive?
     puts
   end
@@ -26,10 +24,10 @@ class Error
       'CLASS_COUNT_ERR': 'Count Error: Multiple classes defined in a module'
     }
 
-    emit_err = error_hash.each {|key|
+    emit_err = lambda { |key|
       puts "#{key[1].to_s.red}. Found On >> line #{line.to_s.yellow} << in #{path.to_s.yellow}" if key[0].to_s == type
     }
- 
-    emit_err
+
+    error_hash.each(&emit_err)
   end
 end

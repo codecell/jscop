@@ -3,6 +3,7 @@ AllCops:
     - "README.md"
     - "Guardfile"
     - "Rakefile"
+    - "lib/modules/useless_var.rb"
 
   DisplayCopNames: true
 

@@ -11,7 +11,7 @@ class JsParser
 
   def set_lines
     file = File.open(@filename)
-    
+
     all_lines = file.readlines.map(&:chomp)
     init_lines = lambda { |val, index|
       line = Line.new(index + 1, val, @filename)

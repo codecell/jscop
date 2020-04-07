@@ -20,10 +20,12 @@ module SpacingChecker
   end
 
   def self.check_spaces(file)
-    file.lines.each { |line|
+    check_line = lambda { |line|
       lines_with_spaces = line.number if found_spaces(line.content)
       err_type = 'SPACING_ERR' if lines_with_spaces
       raise_err(lines_with_spaces, err_type, line.filename)
     }
+
+    file.lines.each(&check_line)
   end
 end

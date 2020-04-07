@@ -13,11 +13,13 @@ module NamingChecker
     bad_var_start.match?(bad_case) || good_var_with_space_in_between.match?(bad_case)
   end
 
-  def self.check_naming(fpath) 
-    fpath.lines.each { |line|
+  def self.check_naming(fpath)
+    check_line = lambda { |line|
       line_with_bad_naming = line.number if bad_var_case(line.content)
       err_type = 'VAR_NAMING_ERR' if line_with_bad_naming
       raise_err(line_with_bad_naming, err_type, line.filename) if line_with_bad_naming
     }
+
+    fpath.lines.each(&check_line)
   end
 end

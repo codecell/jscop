@@ -13,10 +13,7 @@ module ClassCount
     lines_with_class = []
     err_type = 'CLASS_COUNT_ERR'
 
-    file.lines.each { |line| 
-      lines_with_class << line.number if pat.match?(line.content)
-      name = line.filename
-    }
+    file.lines.each { |line| lines_with_class << line.number if pat.match?(line.content) }
     raise_err(lines_with_class, err_type, file.filename) if lines_with_class.length > 1
   end
 end

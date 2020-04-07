@@ -13,11 +13,13 @@ module ClassName
     fes_pat.match?(crime) || sec_pat.match?(crime)
   end
 
-  def self.check_class_name(file) 
-    file.lines.each { |line|
+  def self.check_class_name(file)
+    line_check = lambda { |line|
       bad_class_named_lines = line.number if bad_class_name(line.content)
       err_type = 'CLASS_NAME_ERR' if bad_class_named_lines
       raise_err(bad_class_named_lines, err_type, line.filename)
     }
+
+    file.lines.each(&line_check)
   end
 end
