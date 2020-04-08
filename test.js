@@ -1,8 +1,14 @@
-  
-var Tmeka = 6
+var emeka = 6
+let rainMeka = 8
+  const testy = 7
 
-class edr {
+2emeka = 5000
+
+  rainMeka = 9
+class derd {
 
 }
 
-class Emeka {}
+class {
+  
+}
