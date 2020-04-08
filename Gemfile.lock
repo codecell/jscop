@@ -2,6 +2,20 @@ GEM
   remote: https://rubygems.org/
   specs:
     colorize (0.8.1)
+    diff-lcs (1.3)
+    rspec (3.9.0)
+      rspec-core (~> 3.9.0)
+      rspec-expectations (~> 3.9.0)
+      rspec-mocks (~> 3.9.0)
+    rspec-core (3.9.1)
+      rspec-support (~> 3.9.1)
+    rspec-expectations (3.9.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-mocks (3.9.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-support (3.9.2)
     tty-font (0.5.0)
 
 PLATFORMS
@@ -9,6 +23,7 @@ PLATFORMS
 
 DEPENDENCIES
   colorize (~> 0.8.1)
+  rspec
   tty-font (~> 0.5.0)
 
 BUNDLED WITH

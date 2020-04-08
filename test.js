@@ -1,14 +1,9 @@
-var emeka = 6
-let rainMeka = 8
-  const testy = 7
+var 8meka = 8
 
-2emeka = 5000
+ class Bad-code {
 
-  rainMeka = 9
-class derd {
+  }
 
-}
+class Good_class{
 
-class {
-  
 }
