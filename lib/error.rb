@@ -1,15 +1,16 @@
 class Error
   attr_accessor :line, :err_type, :file_path, :variable
 
+  # rubocop:disable Lint/UnusedMethodArgument
   def initialize(line, err_type, fpath, *variable)
     @line = line
     @err_type = err_type
     @file_path = fpath
   end
+  # rubocop:enable Lint/UnusedMethodArgument
+
   def print_linter_result(error_bin, path)
-    puts 'Nothing to show' unless error_bin
-  
-    # puts "As Clean As Snow! No Errors Found in #{path}".green unless !error_bin.empty?
+    puts "As Clean As Snow! No Errors Found in #{path}".green unless !error_bin.empty?
     # puts "#{number_of_errors} Error(s) Found! in #{path}".yellow if number_of_errors.positive?
     # puts
   end
@@ -34,5 +35,4 @@ class Error
     show_err = error_hash.each(&emit_err)
     print_linter_result(show_err, path)
   end
-
 end

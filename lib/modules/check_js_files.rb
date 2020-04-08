@@ -3,7 +3,7 @@
 module CheckJsFiles
   def self.find_file(path)
     puts "No such File as #{path}" if !File.exist?(path)
-  
+
     File.exist?(path)
   end
 

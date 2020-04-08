@@ -3,7 +3,7 @@ require_relative '../modules/spacing_checker'
 require_relative '../modules/naming_checker'
 require_relative '../modules/class_count'
 require_relative '../modules/class_name'
-require_relative  '../modules/unused_var_checker'
+require_relative '../modules/unused_var_checker'
 
 require_relative '../js_parser'
 require_relative '../error'
