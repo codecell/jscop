@@ -10,6 +10,7 @@ module ClassName
   def self.bad_class_name(crime)
     fes_pat = /[\s]*(class)[\s]*[\d]*[\-]*[a-z]+[\-]*[\w\W]*/
     sec_pat = /[\s]*(class)[\s]*[\p{Alpha}]+[\-]+[\p{Alpha}]+/
+
     fes_pat.match?(crime) || sec_pat.match?(crime)
   end
 
