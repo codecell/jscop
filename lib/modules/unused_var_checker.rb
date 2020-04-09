@@ -1,7 +1,7 @@
 require_relative '../error'
 
 module UnusedVarChecker
-  def self.raise_err(line, message, path, variable)
+  private_class_method def self.raise_err(line, message, path, variable)
     error = Error.new(line, message, path, variable)
     unused_var_err = error.print_err(line, message, path, variable) if error
     unused_var_err
