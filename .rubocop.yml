@@ -7,6 +7,11 @@ AllCops:
 
   DisplayCopNames: true
 
+Lint/RaiseException:
+  Enabled: false
+Lint/StructNewOverride:
+  Enabled: false
+
 Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
@@ -44,6 +49,13 @@ Style/NegatedIf:
 Style/NegatedUnless:
   Enabled: false
 Style/BlockDelimiters:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
   Enabled: false
 
 Layout/HashAlignment:
