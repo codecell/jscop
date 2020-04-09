@@ -8,3 +8,4 @@ files:
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
+    - "spec/spec_helper.rb"
