@@ -40,7 +40,7 @@ This is a Linter for checking errors in Javascript code, built with Ruby.
 ### SPACING ERRORS
   - if Spaces are found at beginning of lines
   - if extra spaces are found around variables e.g
-    - `*Bad practice* <let   vacuuuum = 4> or <var hollow    = 9>`
+    - `*Bad practice* let|   | vacuuuum = 4 or var hollow|    | = 9`
     - `*Good Practice* let meka = 4 or const mEeka = 9`
 
 ### CLASS COUNT ERROR

@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 require_relative '../lib/helpers/lint_ware'
-require_relative '../lib/error'
 require 'tty-font'
 require 'colorize'
 

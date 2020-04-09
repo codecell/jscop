@@ -11,8 +11,7 @@ class Error
 
   def print_linter_result(error_bin, path)
     puts "As Clean As Snow! No Errors Found in #{path}".green unless !error_bin.empty?
-    # puts "#{number_of_errors} Error(s) Found! in #{path}".yellow if number_of_errors.positive?
-    # puts
+    puts
   end
 
   def print_err(line, type, path, *variable)
@@ -27,10 +26,8 @@ class Error
     emit_err = lambda { |key|
       if type == 'UNUSED_VAR_ERR' && key[0].to_s == type
         puts "#{key[1].to_s.yellow} On Line #{line.to_s.yellow} in #{path.to_s.yellow}"
-        puts
       elsif type != 'UNUSED_VAR_ERR' && key[0].to_s == type
         puts "#{key[1].to_s.red} Detected On Line #{line.to_s.yellow} in #{path.to_s.yellow}"
-        puts
       end
     }
 

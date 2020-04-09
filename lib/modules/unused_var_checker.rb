@@ -7,7 +7,7 @@ module UnusedVarChecker
     unused_var_err
   end
 
-  # /(?<lhs>\w+)\s*=\s*(?<rhs>\w+)/ =~ "  x = y  " CREDIT: https://ruby-doc.org/core-2.6.4/Regexp.html
+  # /(?<lhs>\w+)\s*=\s*(?<rhs>\w+)/ =~ "  x = y  " <= From: https://ruby-doc.org/core-2.6.4/Regexp.html
 
   # rubocop:disable Lint/UselessAssignment
   def self.match_variable(contents)
