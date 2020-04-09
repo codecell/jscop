@@ -1,3 +1,3 @@
-// values here affect Rspec results
+// **values here affect Rspec results**
 
 var specVar = 9
