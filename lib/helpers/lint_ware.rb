@@ -6,10 +6,9 @@ require_relative '../modules/class_name'
 require_relative '../modules/unused_var_checker'
 
 require_relative '../js_parser'
-require_relative '../error'
 
 module LintWare
-  def self.start_all(given_file)
+  private_class_method def self.start_all(given_file)
     file = JsParser.new(given_file)
 
     SpacingChecker.check_spaces(file)

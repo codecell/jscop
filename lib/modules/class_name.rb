@@ -1,7 +1,7 @@
 require_relative '../error'
 
 module ClassName
-  def self.raise_err(line, message, path)
+  private_class_method def self.raise_err(line, message, path)
     error = Error.new(line, message, path)
     naming_err = error.print_err(line, message, path) if error
     naming_err

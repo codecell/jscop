@@ -1,7 +1,7 @@
 require_relative '../error'
 
 module ClassCount
-  def self.raise_err(line, message, path)
+  private_class_method def self.raise_err(line, message, path)
     error = Error.new(line, message, path)
     class_count_err = error.print_err(line, message, path) if error
     class_count_err

@@ -1,7 +1,7 @@
 require_relative '../error'
 
 module NamingChecker
-  def self.raise_err(line, err_type, path_name)
+  private_class_method def self.raise_err(line, err_type, path_name)
     error = Error.new(line, err_type, path_name)
     naming_err = error.print_err(line, err_type, path_name) if error
     naming_err

@@ -1,7 +1,7 @@
 require_relative '../error'
 
 module SpacingChecker
-  def self.raise_err(line, message, path)
+  private_class_method def self.raise_err(line, message, path)
     error = Error.new(line, message, path)
     spacing_err = error.print_err(line, message, path) if error
     spacing_err

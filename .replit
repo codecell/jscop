@@ -1,2 +1,2 @@
 language = "ruby"
-run = "js-companion init"
+run = "bin/main.rb ."

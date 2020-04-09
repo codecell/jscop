@@ -9,12 +9,6 @@ class Error
   end
   # rubocop:enable Lint/UnusedMethodArgument
 
-  def print_linter_result(error_bin, path)
-    puts "As Clean As Snow! No Errors Found in #{path}".green unless !error_bin.empty?
-    # puts "#{number_of_errors} Error(s) Found! in #{path}".yellow if number_of_errors.positive?
-    # puts
-  end
-
   def print_err(line, type, path, *variable)
     error_hash = {
       'VAR_NAMING_ERR': 'VariableName Error: Uppercase|Numbers used to Start a Variable name.',
@@ -34,7 +28,6 @@ class Error
       end
     }
 
-    show_err = error_hash.each(&emit_err)
-    print_linter_result(show_err, path)
+    error_hash.each(&emit_err)
   end
 end
