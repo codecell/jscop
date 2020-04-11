@@ -20,7 +20,7 @@ class Error
 
     emit_err = lambda { |key|
       if type == 'UNUSED_VAR_ERR' && key[0].to_s == type
-        puts "#{key[1].to_s.yellow} On Line #{line.to_s.yellow} in #{path.to_s.yellow}"
+        puts "#{key[1].to_s.yellow} On Line #{line.to_s.yellow} in #{path.to_s.yellow}" if line
         puts
       elsif type != 'UNUSED_VAR_ERR' && key[0].to_s == type
         puts "#{key[1].to_s.red} Detected On Line #{line.to_s.yellow} in #{path.to_s.yellow}"

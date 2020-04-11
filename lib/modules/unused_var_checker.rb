@@ -1,6 +1,13 @@
 require_relative '../error'
 
 module UnusedVarChecker
+  def self.check_unused_var_res(error_bin, path)
+    unused_var = check_unused_var(path)
+    unused_var.each { |line, _variabl| error_bin << line if !unused_var.empty? }
+
+    error_bin
+  end
+
   private_class_method def self.raise_err(line, message, path, variable)
     error = Error.new(line, message, path, variable)
     unused_var_err = error.print_err(line, message, path, variable) if error
@@ -20,13 +27,13 @@ module UnusedVarChecker
   def self.create_variables_check_message(count_vs_var, lines_vs_var, filename)
     err_type = 'UNUSED_VAR_ERR'
 
-    send_res = count_vs_var.each { |var_a, counter|
+    count_vs_var.each { |var_a, counter|
       lines_vs_var.each { |line, var_b|
         raise_err(line, err_type, filename, var_b) if counter == 1 && var_a == var_b
       }
     }
 
-    send_res
+    lines_vs_var
   end
 
   def self.check_unused_var(file)

@@ -8,29 +8,31 @@ require_relative '../modules/unused_var_checker'
 require_relative '../js_parser'
 
 module LintWare
-  private_class_method def self.start_all(given_file)
+  private_class_method def self.start_all(error_bin, given_file)
     file = JsParser.new(given_file)
 
-    SpacingChecker.check_spaces(file)
-    NamingChecker.check_naming(file)
-    ClassCount.check_class_number(file)
-    ClassName.check_class_name(file)
-    UnusedVarChecker.check_unused_var(file)
+    NamingChecker.check_naming_res(error_bin, file)
+    SpacingChecker.check_spaces_res(error_bin, file)
+    ClassCount.class_count_res(error_bin, file)
+    ClassName.check_class_name_res(error_bin, file)
+    UnusedVarChecker.check_unused_var_res(error_bin, file)
+    # puts error_bin.to_s
+    error_bin
   end
 
-  def self.init_files_linting(path)
+  def self.init_files_linting(error_bin, path)
     if CheckJsFiles.find_file(path)
-      start_all(path)
+      start_all(error_bin, path)
     else
       puts "No such File as #{path}".yellow
     end
   end
 
-  def self.init_dir_linting(path)
+  def self.init_dir_linting(error_bin, path)
     if CheckJsFiles.find_dir(path)
       files = CheckJsFiles.seek_js(path)
       if files
-        files.each { |file| start_all(file) }
+        files.each { |file| start_all(error_bin, file) }
       else
         puts "No such Folder as #{path}".yellow
       end

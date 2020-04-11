@@ -7,3 +7,5 @@ var 8meka = 8
 class Good_class{
 
 }
+
+ meka = 9
