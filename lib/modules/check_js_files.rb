@@ -16,10 +16,14 @@ module CheckJsFiles
   def self.seek_js(*path)
     if path[0]
       files = Dir["#{path[0]}/**/*.js"]
-      !files.empty? ? files : "No JS files found in #{path[0]} Path"
+      return files if !files.empty?
+
+      puts "No JS files found in #{path[0]} Path" if files.empty?
     else
       files = Dir['./**/*.js']
-      !files.empty? ? files : 'No JS files found in this Folder'
+      return files if !files.empty?
+
+      puts 'No JS files found in this Folder' if files.empty?
     end
   end
 end

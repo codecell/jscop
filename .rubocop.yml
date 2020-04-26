@@ -4,6 +4,7 @@ AllCops:
     - "README.md"
     - "Guardfile"
     - "Rakefile"
+    - "rof_work.rb"
 
   DisplayCopNames: true
 
@@ -15,7 +16,7 @@ Lint/StructNewOverride:
 Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
-  Max: 20
+  Max: 30
 Metrics/AbcSize:
   Max: 50
 Metrics/ClassLength:
@@ -24,7 +25,7 @@ Metrics/BlockLength:
   ExcludedMethods: ["describe"]
   Max: 30
 Metrics/ModuleLength:
-  Max: 500
+  Max: 150
 Metrics/CyclomaticComplexity:
   Max: 20
 Metrics/PerceivedComplexity:
