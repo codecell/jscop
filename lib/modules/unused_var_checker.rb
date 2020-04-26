@@ -41,8 +41,6 @@ module UnusedVarChecker
   def self.create_variables_check_info(count_vs_var, lines_vs_var, filename)
     err_type = 'UNUSED_VAR_ERR'
 
-    puts count_vs_var.to_s
-    puts lines_vs_var.to_s
     lines_with_unused_var = []
 
     count_vs_var.each { |var_a, counter|
