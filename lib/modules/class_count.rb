@@ -3,7 +3,7 @@ require_relative '../error'
 module ClassCount
   def self.class_count_res(error_bin, path)
     lines_with_class_def = class_count(path)
-    error_bin << lines_with_class_def if !lines_with_class_def.empty?
+    error_bin << lines_with_class_def if lines_with_class_def.length > 1
 
     error_bin
   end

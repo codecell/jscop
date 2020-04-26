@@ -16,8 +16,8 @@ module NamingChecker
 
   def self.bad_var_case(bad_case)
     bad_var_start = /(var|let|const|[\s])[\s]*([[:upper:]]{1,}|\d)+(([\w]+[\s][\w]+)|[\w]+)[\s]*[\=][\s]*[\w]*/
-    good_var_with_space_in_between = /^[(var|let|const|[\s])][\s]+[\w]+[\s]{1,}[\w]+[\s]+[\=][\s]+\w+/
-    bad_var_start.match?(bad_case) || good_var_with_space_in_between.match?(bad_case)
+    # good_var_with_space_in_between = /^[(var|let|const|[\s])][\s]+[\w]+[\s]{1,}[\w]+[\s]+[\=][\s]+\w+/
+    bad_var_start.match?(bad_case) # || good_var_with_space_in_between.match?(bad_case)
   end
 
   def self.check_naming(fpath)

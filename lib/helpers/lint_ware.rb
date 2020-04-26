@@ -16,8 +16,8 @@ module LintWare
     ClassCount.class_count_res(error_bin, file)
     ClassName.check_class_name_res(error_bin, file)
     UnusedVarChecker.check_unused_var_res(error_bin, file)
-    # puts error_bin.to_s
-    error_bin
+
+    # error_bin
   end
 
   def self.init_files_linting(error_bin, path)
@@ -37,7 +37,7 @@ module LintWare
         puts "No such Folder as #{path}".yellow
       end
     else
-      CheckJsFiles.find_file(path)
+      CheckJsFiles.find_dir(path)
     end
   end
 end

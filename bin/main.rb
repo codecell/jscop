@@ -10,9 +10,11 @@ def show_title
 end
 
 def print_linter_result(error_bin, fpath)
-  return error_bin unless error_bin.empty?
+  puts
+  puts "#{error_bin.length.to_s.yellow} Offense(s) Detected" unless error_bin.empty?
 
   path_exists = File.exist?(fpath) || Dir.exist?(fpath)
+
   success_msg = 'As clean as Snow!. No offenses found in the $PATH'
 
   puts "#{success_msg} #{fpath}".green if error_bin.empty? && path_exists == true

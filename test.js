@@ -1,11 +1,18 @@
-var 8meka = 8
+//var laymeka = {}
+let array = []
 
- class Bad-code {
+var maker = 'https://github.com/codecell/js-companion'
 
-  }
-
-class Good_class{
+function subsititute(red, maker) {
 
 }
 
- meka = 9
+for(let i = 0, i < array.length, i++) {
+
+}
+
+function ititute({red}) {
+  // [[\w]?\-]
+}
+
+// write regex to exclude commented commented
