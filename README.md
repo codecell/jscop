@@ -24,9 +24,9 @@ Or install it yourself as:
 - once in desired path in the terminal/console, RUN
 
 ```ruby
-jscop # To lint all *.js files in the current Path.
-jscop ./**/path_to_file.js # To lint JUST a specific file.
-jscop foldername # To lint all *.js files a specific folder.
+a. jscop # To lint all *.js files in the current Path.
+b. jscop ./**/path_to_file.js # To lint JUST a specific file.
+c. jscop foldername # To lint all *.js files in a specific folder.
 ```
 
 ## Outline
@@ -55,8 +55,10 @@ jscop foldername # To lint all *.js files a specific folder.
 ### CLASS NAME ERRORS 
   - if class names begin With small letters and/or
   - if class names is Snake-Cased or both e.g
-    - `*Bad practice* class badclass {} or class Bad-class {}`    
+    - `*Bad practice* class badclass {} or class Bad-class {}`   
     - `*Good Practice* class GoodClass {} or class Good_Class {}`
+  - Or if underscores and hyphen are mixed
+    `*Bad practice* class Bad_class-Name {}`
     
 ### SPACING ERRORS
   - if Spaces are found at beginning of lines

@@ -1,2 +1,2 @@
 language = "ruby"
-run = "bin/main.rb ."
+run = "exe/jscop"
