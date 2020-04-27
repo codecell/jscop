@@ -104,6 +104,13 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/codece
 
 Everyone interacting in the Jscop project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/codecell/jscop/blob/master/CODE_OF_CONDUCT.md).
 
+## Author
+
+👤 **Alfred Ezaka**
+
+- Github: [@codecell](https://github.com/codecell)
+- Twitter: [@the_codecell](https://twitter.com/the_codecell) 
+- Linkedin: [ezaka alfred](https://www.linkedin.com/in/alfrednoble/)
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
