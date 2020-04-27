@@ -1,15 +1,37 @@
-[![Run on Repl.it](https://repl.it/badge/github/codecell/js-companion)](https://repl.it/github/codecell/js-companion)
+[![Gem Version](https://badge.fury.io/rb/jscop.svg)](https://badge.fury.io/rb/jscop) [![Run on Repl.it](https://repl.it/badge/github/codecell/js-companion)](https://repl.it/github/codecell/js-companion)
 
-# Js-Companion
+# Jscop
 
 This is a Linter for checking errors in Javascript code, built with Ruby. 
 
-## PREVIEW
-   ![image](https://user-images.githubusercontent.com/46686100/78828956-6eb04300-79dd-11ea-8529-598e8dc3011e.png) 
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'jscop'
+```
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install jscop
+
+## Usage
+- once in desired path in the terminal/console, RUN
+
+```ruby
+jscop # To lint all *.js files in the current Path.
+jscop ./**/path_to_file.js # To lint JUST a specific file.
+jscop foldername # To lint all *.js files a specific folder.
+```
 
 ## Outline
-  - Title, Description and Preview Above
-  - Errors currently detectable by js-companion
+  - Title, Description, Installation, Usage Above
+  - Errors currently detectable by jscop
     - variable naming errors
     - class naming errors
     - Extra or redundant spacing errors 
@@ -17,12 +39,11 @@ This is a Linter for checking errors in Javascript code, built with Ruby.
     - Unused variables are detected
   - Arguments supported to initiate linting
   - Testing Javascript files with Js-Companion
-    - without cloning
     - cloning Locally to local machine
   - Unit Tests
   - Tools used
+  - Code of conduct
   - Contributing
-  - Author Details
 
 ## ERRORS that can currently be detected include
 
@@ -48,6 +69,7 @@ This is a Linter for checking errors in Javascript code, built with Ruby.
 
 ### UNUSED VARIABLE ERROR
   - if a variable (var, let, const) is defined and never used.
+  - A lot of edge cases is covered here.
 
 ## Arguments Supported By Js-Companion to check Javascript code
   - You can pass in file(s) or a folder in any of the following cases in your terminal
@@ -55,26 +77,16 @@ This is a Linter for checking errors in Javascript code, built with Ruby.
     - `You can pass in a Folder and all Javascript files in it will be checked and finally`
     - `Everything Js can be linted all at once (both files and Folders)`
 
-## Testing Your Javscript code
-  -  ### Without Cloning
-  - If You don't want to clone this repository, you can simply click the `Run On Replit badge` above
-    to quickly test the project on Replit. *Note* However that the the Replit console(terminal) does not support the colors and font gems used, so it will appear black/white
-
-    ### To clone and test Javascript files locally
-  - Once in the Path you intend to keep this project in the terminal of your machine
-  - Clone with this command `git clone [repo](https://github.com/codecell/js-companion.git)`
-  - Enter into the folder `cd js-companion`
-  - Install project dependencies with the command `bundle install`
-  - You can make the bin/main.rb executable with the command `chmod +x bin/main.rb` if permission is not granted.
-
-  ### Finally To Check Javascript File;
-  - use the command `bin/main.rb ./**/path_to_file.js` To lint JUST a specific file.
-  - use the command `bin/main.rb FolderName` To lint all `*.js` files a specific folder.
-  - To lint everything, use the command *bin/main.rb dot* => `bin/main.rb .` to lint (all files and folders) visible from the root of the current folder.
+## Testing This Repo
+- Once in the Path you intend to keep this project in the terminal of your machine
+- Clone with this command git clone [repo](https://github.com/codecell/jscop.git)
+- change directory into the folder cd jscop
+- Install project dependencies with the command bundle install
+- You can make the exe/jscop executable with the command chmod a+x exe/jscop if permission is not granted
 
 ## Unit Tests
 - Ensure you have `rspec` installed, or ensure the `gem 'rspec` is listed among the gems in the `Gemfile` => then run `bundle install`
-- in your console, run `rspec` to run all the unit tests written for this project
+- in your console, run `rspec` or `rake` to run all the unit tests written for this project
 
 ## Built With
 - Ruby
@@ -82,20 +94,14 @@ This is a Linter for checking errors in Javascript code, built with Ruby.
 - Rubocop Linter
 - Stickler CI
 
-## Contributing 
-- Your contributions are highly welcome on improving this project
+## Contributing
 
-## Author
+Bug reports and pull requests are welcome on GitHub at https://github.com/codecell/jscop. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-👤 **Alfred Ezaka**
+## Code of Conduct
 
-- Github: [@codecell](https://github.com/codecell)
-- Twitter: [@the_codecell](https://twitter.com/the_codecell) 
-- Linkedin: [ezaka alfred](https://www.linkedin.com/in/alfrednoble/)
+Everyone interacting in the Jscop project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/codecell/jscop/blob/master/CODE_OF_CONDUCT.md).
 
+## License
 
-## Show your support
-
-Give a ⭐️ if you like this project!
-## Licence
-MIT
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

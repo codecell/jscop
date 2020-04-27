@@ -5,7 +5,8 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "rof_work.rb"
-    - "vendor"
+    - "vendor/**/*"
+    - "jscop.gemspec"
 
   DisplayCopNames: true
 

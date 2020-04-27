@@ -1,3 +1,3 @@
 module Jscop
-  VERSION = "0.0.0.t"
+  VERSION = '0.1.2'.freeze
 end
