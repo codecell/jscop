@@ -1,11 +1,11 @@
-require_relative '../modules/check_js_files'
-require_relative '../modules/spacing_checker'
-require_relative '../modules/naming_checker'
-require_relative '../modules/class_count'
-require_relative '../modules/class_name'
-require_relative '../modules/unused_var_checker'
+require_relative '../jscop/check_js_files'
+require_relative '../jscop/spacing_checker'
+require_relative '../jscop/naming_checker'
+require_relative '../jscop/class_count'
+require_relative '../jscop/class_name'
+require_relative '../jscop/unused_var_checker'
 
-require_relative '../js_parser'
+require_relative '../classes/js_parser'
 
 module LintWare
   private_class_method def self.start_all(error_bin, given_file)
@@ -17,7 +17,7 @@ module LintWare
     ClassName.check_class_name_res(error_bin, file)
     UnusedVarChecker.check_unused_var_res(error_bin, file)
 
-    # error_bin
+    error_bin
   end
 
   def self.init_files_linting(error_bin, path)
@@ -31,11 +31,7 @@ module LintWare
   def self.init_dir_linting(error_bin, path)
     if CheckJsFiles.find_dir(path)
       files = CheckJsFiles.seek_js(path)
-      if files
-        files.each { |file| start_all(error_bin, file) }
-      else
-        puts "No such Folder as #{path}".yellow
-      end
+      files.each { |file| start_all(error_bin, file) } if files
     else
       CheckJsFiles.find_dir(path)
     end

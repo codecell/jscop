@@ -1,5 +1,5 @@
-require_relative '../lib/js_parser'
-require_relative '../lib/line.rb'
+require_relative '../lib/classes/js_parser'
+require_relative '../lib/classes/line.rb'
 
 RSpec.describe JsParser do
   let(:js_file) { JsParser.new('./spec/asset.js') }

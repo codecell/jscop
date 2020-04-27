@@ -1,4 +1,4 @@
-require_relative '../lib/modules/naming_checker'
+require_relative '../lib/jscop/naming_checker'
 
 RSpec.describe NamingChecker do
   let(:bad_name) { 'var 8meka = 8' }

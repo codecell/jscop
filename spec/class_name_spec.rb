@@ -1,4 +1,4 @@
-require_relative '../lib/modules/class_name'
+require_relative '../lib/jscop/class_name'
 
 RSpec.describe ClassName do
   let(:bad_class_1) { 'class Ema-ker {}' }

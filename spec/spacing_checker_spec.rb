@@ -1,4 +1,4 @@
-require_relative '../lib/modules/spacing_checker'
+require_relative '../lib/jscop/spacing_checker'
 
 RSpec.describe ClassName do
   let(:bad_spacing_1) { ' class Emaker {}' }
