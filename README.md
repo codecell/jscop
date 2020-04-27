@@ -111,6 +111,7 @@ Everyone interacting in the Jscop project’s codebases, issue trackers, chat ro
 - Github: [@codecell](https://github.com/codecell)
 - Twitter: [@the_codecell](https://twitter.com/the_codecell) 
 - Linkedin: [ezaka alfred](https://www.linkedin.com/in/alfrednoble/)
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

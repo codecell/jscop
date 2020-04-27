@@ -18,7 +18,9 @@ module ClassName
     fes_pat = /[\s]*(class)[\s]*[\d]*[\-]*[a-z]+[\-]*[\w\W]*/
     sec_pat = /[\s]*(class)[\s]*[\p{Alpha}]+[\-]+[\p{Alpha}]+/
 
-    fes_pat.match?(crime) || sec_pat.match?(crime)
+    commented_line = crime.match?(%r{^\W+[\/\/]})
+
+    !commented_line && (fes_pat.match?(crime) || sec_pat.match?(crime))
   end
 
   def self.check_class_name(file)

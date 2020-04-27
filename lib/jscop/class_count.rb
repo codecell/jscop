@@ -16,11 +16,15 @@ module ClassCount
 
   def self.class_count(file)
     pat = /(class)/
+    commented_line = %r{^\W+[\/\/]}
 
     lines_with_class = []
     err_type = 'CLASS_COUNT_ERR'
 
-    file.lines.each { |line| lines_with_class << line.number if pat.match?(line.content) }
+    file.lines.each { |line|
+      needed_lines_with_class = pat.match?(line.content) && !line.content.match?(commented_line)
+      lines_with_class << line.number if needed_lines_with_class
+    }
     raise_err(lines_with_class, err_type, file.filename) if lines_with_class.length > 1
 
     lines_with_class

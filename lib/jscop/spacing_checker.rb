@@ -20,11 +20,13 @@ module SpacingChecker
     spaced_console = /[\s]+(function|(console.log)[\(][\w]*[\)])[\s]*/
     closing_line = /[\s]+[\}][\s]*/
 
+    commented_line = cont.match?(%r{^\W+[\/\/]})
+
     a = spaces_before.match?(cont)
     b = spaces_after.match?(cont)
     c = spaced_console.match?(cont)
 
-    a || b || c || closing_line.match?(cont)
+    !commented_line && (a || b || c || closing_line.match?(cont))
   end
 
   def self.check_spaces(file)

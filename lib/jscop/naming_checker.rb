@@ -16,7 +16,9 @@ module NamingChecker
 
   def self.bad_var_case(bad_case)
     bad_var_start = /(var|let|const|[\s])[\s]*([[:upper:]]{1,}|\d)+(([\w]+[\s][\w]+)|[\w]+)[\s]*[\=][\s]*[\w]*/
-    bad_var_start.match?(bad_case)
+    commented_line = bad_case.match?(%r{^\W+[\/\/]})
+
+    bad_var_start.match?(bad_case) && !commented_line
   end
 
   def self.check_naming(fpath)
