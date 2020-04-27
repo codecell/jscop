@@ -1,4 +1,4 @@
-[![Gem Version](https://badge.fury.io/rb/jscop.svg)](https://badge.fury.io/rb/jscop) [![Run on Repl.it](https://repl.it/badge/github/codecell/js-companion)](https://repl.it/github/codecell/js-companion)
+[![Gem Version](https://badge.fury.io/rb/jscop.svg)](https://badge.fury.io/rb/jscop)  [![Build Status](https://travis-ci.org/codecell/jscop.svg?branch=release%2F0.1.4)](https://travis-ci.org/codecell/jscop)  [![Run on Repl.it](https://repl.it/badge/github/codecell/js-companion)](https://repl.it/github/codecell/js-companion)
 
 # Jscop
 
