@@ -24,7 +24,7 @@ Or install it yourself as:
 - once in desired path in the terminal/console, RUN
 
 ```ruby
-jscop # To lint all *.js in current Path.
+jscop # To lint all *.js files in the current Path.
 jscop ./**/path_to_file.js # To lint JUST a specific file.
 jscop foldername # To lint all *.js files a specific folder.
 ```
@@ -78,6 +78,12 @@ jscop foldername # To lint all *.js files a specific folder.
     - `Everything Js can be linted all at once (both files and Folders)`
 
 ## Testing This Repo
+- Once in the Path you intend to keep this project in the terminal of your machine
+- Clone with this command git clone [repo](https://github.com/codecell/jscop.git)
+- change directory into the folder cd jscop
+- Install project dependencies with the command bundle install
+- You can make the exe/jscop executable with the command chmod a+x exe/jscop if permission is not granted
+
 ## Unit Tests
 - Ensure you have `rspec` installed, or ensure the `gem 'rspec` is listed among the gems in the `Gemfile` => then run `bundle install`
 - in your console, run `rspec` or `rake` to run all the unit tests written for this project
@@ -96,8 +102,6 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/codece
 
 Everyone interacting in the Jscop project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/codecell/jscop/blob/master/CODE_OF_CONDUCT.md).
 
-
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
