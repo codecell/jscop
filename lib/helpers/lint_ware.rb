@@ -31,7 +31,7 @@ module LintWare
   def self.init_dir_linting(error_bin, path)
     if CheckJsFiles.find_dir(path)
       files = CheckJsFiles.seek_js(path)
-      files.each { |file| start_all(error_bin, file) } if files
+      files.each { |file| start_all(error_bin, file) } && files
     else
       CheckJsFiles.find_dir(path)
     end

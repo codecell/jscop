@@ -1,4 +1,4 @@
-require "jscop/version"
+require 'jscop/version'
 
 module Jscop
   class Error < StandardError; end

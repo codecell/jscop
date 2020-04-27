@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require "jscop/version"
+require 'jscop/version'
 require_relative '../lib/helpers/lint_ware'
 require 'tty-font'
 require 'colorize'
@@ -26,7 +26,6 @@ def jscop_init
   show_title
 
   path = ARGV[0]
-  
   path = '.' if ARGV.empty?
 
   error_bin = []
