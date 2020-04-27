@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jscop (0.1.0)
+    jscop (0.1.1)
       colorize (~> 0.8)
       tty-font (~> 0.5)
 
