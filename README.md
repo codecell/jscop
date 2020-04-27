@@ -21,11 +21,12 @@ Or install it yourself as:
     $ gem install jscop
 
 ## Usage
+- once in desired path in the terminal/console, RUN
 
 ```ruby
-`jscop` To lint all `*.js` in current Path.
-`jscop ./**/path_to_file.js` To lint JUST a specific file.
-`jscop foldername` To lint all `*.js` files a specific folder.
+jscop # To lint all *.js in current Path.
+jscop ./**/path_to_file.js # To lint JUST a specific file.
+jscop foldername # To lint all *.js files a specific folder.
 ```
 
 ## Outline
@@ -41,8 +42,8 @@ Or install it yourself as:
     - cloning Locally to local machine
   - Unit Tests
   - Tools used
+  - Code of conduct
   - Contributing
-  - Author Details
 
 ## ERRORS that can currently be detected include
 
@@ -76,20 +77,7 @@ Or install it yourself as:
     - `You can pass in a Folder and all Javascript files in it will be checked and finally`
     - `Everything Js can be linted all at once (both files and Folders)`
 
-## Testing Your Javscript code
-  ### To clone and test Javascript files locally
-
-  - Once in the Path you intend to keep this project in the terminal of your machine
-  - Clone with this command `git clone [repo](https://github.com/codecell/js-companion.git)`
-  - Enter into the folder `cd jscop`
-  - Install project dependencies with the command `bundle install`
-  - You can make the bin/main.rb executable with the command `chmod a+x exe/jscop` if permission is not granted.
-
-  ### Finally To Check Javascript File;
-  - use the command `exe/jscop ./**/path_to_file.js` To lint JUST a specific file.
-  - use the command `exe/jscop FolderName` To lint all `*.js` files a specific folder.
-  - To lint everything, use the command *exe/jscop dot* => `exe/jscop .` to lint (all files and folders) visible from the root of the current folder.
-
+## Testing This Repo
 ## Unit Tests
 - Ensure you have `rspec` installed, or ensure the `gem 'rspec` is listed among the gems in the `Gemfile` => then run `bundle install`
 - in your console, run `rspec` or `rake` to run all the unit tests written for this project
