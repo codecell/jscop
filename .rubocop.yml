@@ -5,6 +5,7 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "rof_work.rb"
+    - "vendor"
 
   DisplayCopNames: true
 

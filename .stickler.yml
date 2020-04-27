@@ -10,3 +10,4 @@ files:
     - "node_modules/**/*"
     - "spec/spec_helper.rb"
     - "rof_work.rb"
+    - "vendor"
