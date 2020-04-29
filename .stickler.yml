@@ -1,0 +1,14 @@
+linters:
+  rubocop:
+    display_cop_names: true
+    config: "./rubocop.yml"
+
+files:
+  ignore:
+    - "Guardfile"
+    - "lib/jscop/spacing_checker.rb"
+    - "Rakefile"
+    - "node_modules/**/*"
+    - "spec/spec_helper.rb"
+    - "vendor/**/*"
+    - "jscop.gemspec"
