@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
-require 'jscop/version'
-require_relative '../lib/helpers/lint_ware'
 require 'tty-font'
 require 'colorize'
+
+require 'jscop/version'
+require_relative '../lib/helpers/lint_ware'
 
 def show_title
   font = TTY::Font.new

@@ -15,27 +15,71 @@ module SpacingChecker
   end
 
   def self.found_spaces(cont)
-    spaces_before = /[\s]+(const|let|var|function|class|[\}$])[\s]+[\w]*/
-    spaces_after = /(const|let|var|function|class)[\s]{2,}[\w]+[\s]*[\=]/
-    spaced_console = /[\s]+(function|(console.log)[\(][\w]*[\)])[\s]*/
-    closing_line = /[\s]+[\}][\s]*/
+    /(?<lhs>\w+[\W]*)\s{2,}(?<rhs>\w+[\W]*)/ =~ cont
+    vsf = !Regexp.last_match.nil?
+
+    /(?<lhs>\w+\W*)\s{2,}=\s*(?<rhs>\w+\W*)/ =~ cont
+    beq = !Regexp.last_match.nil?
+
+    /(?<lhs>\w+\W*)\s*=\s{2,}(?<rhs>\w+\W*)/ =~ cont
+    aeq = !Regexp.last_match.nil?
+
+    spaced_console = /(console.log)[\s+][\(][\w\W]+[\)]/
+    spc = spaced_console.match?(cont)
+    commented_line = cont.match?(%r{^\W+[\/\/]})
+
+    !commented_line && (vsf || beq || aeq || spc)
+  end
+
+  def self.closing_curly_spacing(cont)
+    spaced_closing_curly = /[\s]+[\}][\s]*/
+    c = spaced_closing_curly.match(cont)
 
     commented_line = cont.match?(%r{^\W+[\/\/]})
 
-    a = spaces_before.match?(cont)
-    b = spaces_after.match?(cont)
-    c = spaced_console.match?(cont)
+    c && !commented_line
+  end
 
-    !commented_line && (a || b || c || closing_line.match?(cont))
+  def self.closed_curly(cont)
+    cont.match?(/}/)
+  end
+
+  def self.open_curly(cont)
+    cont.match?(/{/)
+  end
+
+  def self.line_beginining_spaces(line)
+    /^[\s+][\w\W]*/.match?(line)
   end
 
   def self.check_spaces(file)
+    seen_open = false
+    counter = 0
     lines_with_spaces = []
-    check_line = lambda { |line|
-      lines_with_spaces << line.number if found_spaces(line.content) && !lines_with_spaces.nil?
-    }
+
+    opening_tracker = 0
+    closing_tracker = 0
+
+    arr = file.lines
     err_type = 'SPACING_ERR'
-    file.lines.each(&check_line)
+
+    while counter < arr.length
+      line = arr[counter]
+
+      seen_open = true if open_curly(line.content)
+
+      opening_tracker += 1 if line.content.match?(/{/)
+      closing_tracker += 1 if line.content.match?(/}/)
+
+      lines_with_spaces << line.number if line_beginining_spaces(line.content) unless seen_open
+      opt = (opening_tracker == closing_tracker)
+      seen_open = false if closed_curly(line.content) && opt
+
+      lines_with_spaces << line.number if closing_curly_spacing(line.content) && opt
+      lines_with_spaces << line.number if found_spaces(line.content) && !lines_with_spaces.nil?
+
+      counter += 1
+    end
 
     lines_with_spaces.each { |line| raise_err(line, err_type, file.filename) if !lines_with_spaces.empty? }
   end

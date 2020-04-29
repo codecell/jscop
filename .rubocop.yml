@@ -1,10 +1,10 @@
 AllCops:
   Exclude:
     - "spec/spec_helper.rb"
+    - "lib/jscop/spacing_checker.rb"
     - "README.md"
     - "Guardfile"
     - "Rakefile"
-    - "rof_work.rb"
     - "vendor/**/*"
     - "jscop.gemspec"
 

@@ -14,6 +14,15 @@ module UnusedVarChecker
     unused_var_err
   end
 
+  def self.check_escapable(elem)
+    escapables = [
+      '', 'var', 'let', 'const', 'constructor', 'class', 'super', 'function', 'static', 'console',
+      '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
+    ]
+
+    escapables.include?(elem)
+  end
+
   def self.extract_from_parentesis(expresn)
     /([\(][\w\W]+[\)])/ =~ expresn
     vars_match_data = Regexp.last_match
@@ -33,8 +42,15 @@ module UnusedVarChecker
   # rubocop:disable Lint/UselessAssignment
   def self.match_variable(contents)
     /(?<lhs>\w+)\s*=\s*(?<rhs>\w*\W*)/ =~ contents
+    equals_var = Regexp.last_match(:lhs)
 
-    lhs
+    /(?<lhs>(let|var|const))\s{1,}(?<rhs>[\w\-]*)/ =~ contents
+    lazy_init_var = Regexp.last_match(:rhs)
+
+    /(?<lhs>\w+)\s*(?<rhs>[\(\w+\)]*)/ =~ contents
+    func_call_var = Regexp.last_match(:lhs)
+
+    equals_var || lazy_init_var || func_call_var
   end
   # rubocop:enable Lint/UselessAssignment
 
@@ -65,21 +81,19 @@ module UnusedVarChecker
       vars_match_data = vars_match_data if !vars_match_data.nil?
       vars_match_data_str_arr = vars_match_data.to_s.split
 
-      escapables = ['var', 'let', '', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-
       vars_match_data_str_arr.collect { |var|
         /([\w\-]+)/ =~ var
         wanted = Regexp.last_match
         wanted = wanted.to_s
         lines_variables_hash[line.number] = wanted if wanted
-        variable_instances << wanted if !escapables.include?(wanted)
+        variable_instances << wanted if !check_escapable(wanted)
       }
 
       commented_line = line.content.to_s.match?(%r{^\W+[\/\/]})
 
-      detected_variable = match_variable(line.content.to_s) if !commented_line
-      lines_variables_hash[line.number] = detected_variable if detected_variable
-      variable_instances << detected_variable if detected_variable
+      detected_var = match_variable(line.content.to_s) if !commented_line
+      lines_variables_hash[line.number] = detected_var if detected_var
+      variable_instances << detected_var if !check_escapable(detected_var)
     }
 
     file.lines.each(&line_check)

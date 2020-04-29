@@ -6,9 +6,9 @@ linters:
 files:
   ignore:
     - "Guardfile"
+    - "lib/jscop/spacing_checker.rb"
     - "Rakefile"
     - "node_modules/**/*"
     - "spec/spec_helper.rb"
-    - "rof_work.rb"
     - "vendor/**/*"
     - "jscop.gemspec"
