@@ -17,29 +17,38 @@ module UnusedVarChecker
   def self.check_escapable(elem)
     escapables = [
       '', 'var', 'let', 'const', 'constructor', 'class', 'super', 'function', 'static', 'console',
+      'prototype', 'get', 'set', 'this', 'alert', 'prompt',
       '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
     ]
 
     escapables.include?(elem)
   end
 
-  def self.extract_from_parentesis(expresn)
-    /([\(][\w\W]+[\)])/ =~ expresn
-    vars_match_data = Regexp.last_match
+  def self.vars_parentesis(paramz)
+    /(?<lhs>[\(])(?<rhs>[^\{]*[\w\-]+)/ =~ paramz
+    vars = Regexp.last_match(:rhs)
+    vars = vars.to_s.split if vars
+    vars_match_data = vars.to_s.split
 
-    vars_match_data_str_arr = vars_match_data.to_s.split
-
-    vars_match_data_str_arr.collect { |var|
+    each_var = vars_match_data.collect { |var|
       /([\w\-]+)/ =~ var
-      wanted = Regexp.last_match
+      wanted = Regexp.last_match(0)
       wanted = wanted.to_s
-
-      all_params << wanted.to_s if !wanted.empty?
+      wanted
     }
+    each_var[0] if each_var[0] && !each_var.nil?
   end
-  # /(?<lhs>\w+)\s*=\s*(?<rhs>\w+)/ =~ "  x = y  " <= From: https://ruby-doc.org/core-2.6.4/Regexp.html
 
-  # rubocop:disable Lint/UselessAssignment
+  def self.match_accessd_var(vari)
+    /(?<lhs>[\w+\-*]+)[\[](?<rhs>[\w+\-*]+)/ =~ vari
+    sqad = Regexp.last_match(:rhs)
+
+    /(?<lhs>[\w+\-*]+)\.(?<rhs>[\w+\-*]+)/ =~ vari
+    awda = Regexp.last_match(:rhs)
+
+    sqad || awda
+  end
+
   def self.match_variable(contents)
     /(?<lhs>\w+)\s*=\s*(?<rhs>\w*\W*)/ =~ contents
     equals_var = Regexp.last_match(:lhs)
@@ -50,9 +59,8 @@ module UnusedVarChecker
     /(?<lhs>\w+)\s*(?<rhs>[\(\w+\)]*)/ =~ contents
     func_call_var = Regexp.last_match(:lhs)
 
-    equals_var || lazy_init_var || func_call_var
+    lazy_init_var || func_call_var || equals_var
   end
-  # rubocop:enable Lint/UselessAssignment
 
   def self.create_variables_check_info(count_vs_var, lines_vs_var, filename)
     err_type = 'UNUSED_VAR_ERR'
@@ -75,29 +83,23 @@ module UnusedVarChecker
     lines_variables_hash = {}
 
     line_check = lambda { |line|
-      /([\(][\w\W]+[\)])/ =~ line.content.to_s
-      vars_match_data = Regexp.last_match
-
-      vars_match_data = vars_match_data if !vars_match_data.nil?
-      vars_match_data_str_arr = vars_match_data.to_s.split
-
-      vars_match_data_str_arr.collect { |var|
-        /([\w\-]+)/ =~ var
-        wanted = Regexp.last_match
-        wanted = wanted.to_s
-        lines_variables_hash[line.number] = wanted if wanted
-        variable_instances << wanted if !check_escapable(wanted)
-      }
-
       commented_line = line.content.to_s.match?(%r{^\W+[\/\/]})
 
+      from_parentsis = vars_parentesis(line.content.to_s) if !commented_line
+      lines_variables_hash[line.number] = from_parentsis if from_parentsis
+      variable_instances << from_parentsis if !check_escapable(from_parentsis) && !from_parentsis.nil?
+
       detected_var = match_variable(line.content.to_s) if !commented_line
+      detected_accessd_var = match_accessd_var(line.content.to_s) if !commented_line
+
       lines_variables_hash[line.number] = detected_var if detected_var
-      variable_instances << detected_var if !check_escapable(detected_var)
+      lines_variables_hash[line.number] = detected_accessd_var if detected_accessd_var
+
+      variable_instances << detected_var if !check_escapable(detected_var) && !detected_var.nil?
+      variable_instances << detected_accessd_var if !check_escapable(detected_accessd_var) && !detected_accessd_var.nil?
     }
 
     file.lines.each(&line_check)
-
     variable_instances.map { |el|
       var_instances_count_hash[el] = var_instances_count_hash[el] ? var_instances_count_hash[el] += 1 : 1
     }

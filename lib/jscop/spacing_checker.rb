@@ -31,6 +31,15 @@ module SpacingChecker
     !commented_line && (vsf || beq || aeq || spc)
   end
 
+  def self.spc_around_fn(cont)
+    around_funcs = /[\)][\s]{2,}[\{]/.match?(cont)
+    around_classes = /[\w+\-*]*[\s]{2,}[\{]/.match?(cont)
+
+    commented_line = cont.match?(%r{^\W+[\/\/]})
+
+    !commented_line && (around_funcs || around_classes)
+  end
+
   def self.closing_curly_spacing(cont)
     spaced_closing_curly = /[\s]+[\}][\s]*/
     c = spaced_closing_curly.match(cont)
@@ -69,7 +78,7 @@ module SpacingChecker
       seen_open = true if open_curly(line.content)
 
       opening_tracker += 1 if line.content.match?(/{/)
-      closing_tracker += 1 if line.content.match?(/}/)
+      closing_tracker += 1 if line.content.match?(/}/) && !line.content.match?(/[\}][\s]*[\)]/)
 
       lines_with_spaces << line.number if line_beginining_spaces(line.content) unless seen_open
       opt = (opening_tracker == closing_tracker)
@@ -77,6 +86,7 @@ module SpacingChecker
 
       lines_with_spaces << line.number if closing_curly_spacing(line.content) && opt
       lines_with_spaces << line.number if found_spaces(line.content) && !lines_with_spaces.nil?
+      lines_with_spaces << line.number if spc_around_fn(line.content)
 
       counter += 1
     end
