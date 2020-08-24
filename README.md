@@ -1,8 +1,24 @@
-[![Gem Version](https://badge.fury.io/rb/jscop.svg)](https://badge.fury.io/rb/jscop)  [![Build Status](https://travis-ci.org/codecell/jscop.svg?branch=development)](https://travis-ci.org/codecell/jscop)  [![Run on Repl.it](https://repl.it/badge/github/codecell/jscop)](https://repl.it/github/codecell/jscop)
+[![Gem Version](https://badge.fury.io/rb/jscop.svg)](https://badge.fury.io/rb/jscop)  [![Build Status](https://travis-ci.org/codecell/jscop.svg?branch=development)](https://travis-ci.org/codecell/jscop)
 
 # Jscop
 
 This is a Linter for checking errors in Javascript code, built with Ruby. 
+
+## Outline
+  - [Installation](#Installation)
+  - [Usage](#Usage)
+  - [Errors currently detectable by jscop](#ERRORS)
+    - Variable naming errors
+    - Class naming errors
+    - Extra or redundant spacing errors 
+    - Multiple declaration of classes in a file (class count) errors
+    - Unused variables are detected
+  - [More about usage](#More-About-Usage)
+  - [Testing this repo](#Testing-This-Repo)
+  - [Built With](#Built-With)
+  - [Contributing](#contributing)
+  - [Code of conduct](#Code-of-Conduct)
+  - [Licence](#License)
 
 ## Installation
 
@@ -29,22 +45,8 @@ b. jscop ./**/path_to_file.js # To lint JUST a specific file.
 c. jscop foldername # To lint all *.js files in a specific folder.
 ```
 
-## Outline
-  - Title, Description, Installation, Usage above
-  - Errors currently detectable by jscop
-    - Variable naming errors
-    - Class naming errors
-    - Extra or redundant spacing errors 
-    - Multiple declaration of classes in a file (class count) errors
-    - Unused variables are detected
-  - Arguments supported to initiate linting
-  - Testing this repo
-  - Unit tests
-  - Tools used
-  - Code of conduct
-  - Contributing
-
-## ERRORS that can currently be detected include
+## ERRORS 
+  The following erros are currently detectable by Jscop:
 
 ### VARIABLE NAMING ERRORS
   - if capital letters or numbers are used to start a variable name, e.g
@@ -72,20 +74,19 @@ c. jscop foldername # To lint all *.js files in a specific folder.
   - if a variable (var, let, const) is defined and never used.
   - A lot of edge cases are covered here.
 
-## Arguments Supported By jscop to Check Javascript Code
+## More About Usage
+  Arguments Supported By jscop to Check Javascript Code
   - You can pass in file(s) or a folder in any of the following cases in your terminal
     - `You can pass in a specific file $Path to test just the file`
     - `You can pass in a folder and all javascript files in it will be checked and finally`
     - `Everything Js can be linted all at once (both files and folders)`
 
-## Testing This Repo
+## Testing this Repo
 - Once in the $Path you intend to keep this project in the terminal of your machine
 - Clone with this command `git clone [repo](https://github.com/codecell/jscop.git)`
 - Change directory into the folder `cd jscop`
 - Install project dependencies with the command `bundle install`
 - You can make the `exe/jscop` file executable with the command `chmod a+x exe/jscop` if permission is not granted
-
-## Unit Tests
 - Ensure you have `rspec` installed, or ensure that `gem rspec` is listed among the gems in the `Gemfile` => then run `bundle install`
 - In the console, run `rspec` or `rake` to run all the unit tests written for this project
 
