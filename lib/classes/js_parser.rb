@@ -14,7 +14,10 @@ class JsParser
     all_lines = file.readlines.map(&:chomp)
     init_lines = lambda { |val, index|
       line = Line.new(index + 1, val, @filename)
-      @lines << line if !line.filename.match?(/(node_modules)/)
+      config_folders = line.filename.match?(/(node_modules|config|babel)/)
+      next if config_folders
+
+      @lines << line
     }
 
     all_lines.each_with_index(&init_lines)
