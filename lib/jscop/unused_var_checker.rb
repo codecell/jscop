@@ -17,7 +17,7 @@ module UnusedVarChecker
   def self.check_escapable(elem)
     escapables = [
       '', 'var', 'let', 'const', 'constructor', 'class', 'super', 'function', 'static', 'console',
-      'prototype', 'get', 'set', 'this', 'alert', 'prompt', 'return',
+      'prototype', 'get', 'set', 'this', 'alert', 'prompt', 'return', 'export', 'import', 'default',
       '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
     ]
 
